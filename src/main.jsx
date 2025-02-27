@@ -14,10 +14,12 @@ import Login from "./components/login.jsx";
 import Comments from "./components/comments.jsx";
 import Task from "./components/task.jsx";
 import AuthProvider from "./Provider/AuthProvider.jsx";
+import UpdateTask from "./components/UpdateTask.jsx";
+import Home from "./components/Home.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Login/>,
+    element: <Home></Home>,
   },
   {
     path: "/task",
@@ -28,8 +30,8 @@ const router = createBrowserRouter([
     element: <Comments/>,
   },
   {
-    path: "/comments/:category/:id",
-    element: <Comments/>,
+    path: "/tasks/:id",
+    element: <UpdateTask></UpdateTask>,
   },
 ]);
 

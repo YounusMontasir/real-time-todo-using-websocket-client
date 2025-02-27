@@ -12,16 +12,7 @@ body {
   margin: 0;
   padding: 0;
 }
-.navbar {
-  width: 100%;
-  background-color: #e1eef3;
-  height: 10vh;
-  border-bottom: 1px solid #ddd;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 20px;
-}
+
 .form__input {
   min-height: 20vh;
   display: flex;
@@ -43,16 +34,9 @@ body {
   outline: none;
   height: 43px;
 }
-.container {
-  width: 100%;
-  min-height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 10px;
-}
 
-.completed__wrapper,
+
+/* .completed__wrapper,
 .ongoing__wrapper,
 .pending__wrapper {
   width: 32%;
@@ -60,11 +44,11 @@ body {
   display: flex;
   flex-direction: column;
   padding: 5px;
-}
+} */
 .ongoing__wrapper > h3,
 .pending__wrapper > h3,
 .completed__wrapper > h3 {
-  text-align: center;
+  
   text-transform: capitalize;
 }
 .pending__items {

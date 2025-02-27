@@ -17,7 +17,7 @@ const TaskContainer = ({ socket }) => {
     if (!user?.email) return; // Don't fetch if user is not ready
   
     function fetchTasks() {
-      fetch(`http://localhost:5000/tasks?userEmail=${user.email}`)
+      fetch(`https://real-time-todo-using-websocket-server.onrender.com/tasks?userEmail=${user.email}`)
         .then((res) => res.json())
         .then((data) => {
           const formattedTasks = {
@@ -106,7 +106,7 @@ const handleDelete = (id) =>{
     confirmButtonText: "Yes, delete it!"
   }).then((result) => {
     if (result.isConfirmed) {
-      fetch(`http://localhost:5000/tasks/${id}`,{
+      fetch(`https://real-time-todo-using-websocket-server.onrender.com/tasks/${id}`,{
         method: 'DELETE'
       })
       .then(res=>res.json())
@@ -125,12 +125,12 @@ const handleDelete = (id) =>{
   });
 }
   return (
-    <div className="container">
+    <div className="container flex flex-col lg:flex-row gap-6">
       <DragDropContext onDragEnd={handleDragEnd}>
         {Object.entries(tasks).map(([key, task]) => (
-          <div className={`${key}__wrapper`} key={key}>
+          <div className={`${key}__wrapper w-full mt-10 mx-auto`} key={key}>
             <h3>{task.title} Tasks</h3>
-            <div className={`${key}__container`}>
+            <div className={`${key}__container w-full`}>
               <Droppable droppableId={key}>
                 {(provided) => (
                   <div ref={provided.innerRef} {...provided.droppableProps}>
@@ -147,17 +147,18 @@ const handleDelete = (id) =>{
                             {...provided.dragHandleProps}
                             className={`${key}__items`}
                           >
-                            <p>{item.taskTitle}</p>
-                            <p>{item.taskDescription}</p>
-                            {item.todoDate && <p>Due: {item.todoDate}</p>}
-                            <div>
+                            <p className="text-xl font-bold flex items-start mb-2">Title: {item.taskTitle}</p>
+                            <p className="text-[18px] font-medium text-gray-600 flex items-start mb-1">Description:{item.taskDescription}</p>
+                            <p className="text-gray-600 flex items-start">{item.category}</p>
+                            {item.todoDate && <p className="text-gray-600 flex items-start my-1">Date: {item.todoDate}</p>}
+                            <div className="flex justify-between">
                               <div>
                                 <button onClick={()=> handleDelete(item._id)}><Trash2 /></button>
                               </div>
                               <div>
                               <p className="comment">
-                              <Link to={`/comments/${key}/${item._id}`}>
-                               Update
+                              <Link to={`/tasks/${item._id}`}>
+                               <button className="px-3 py-2 bg-[#6C7D47] text-white rounded-md">Update</button>
                               </Link>
                             </p>
                               </div>

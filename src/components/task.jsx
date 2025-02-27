@@ -4,7 +4,7 @@ import io from "socket.io-client"
 import AddTask from './addTask';
 import Taskcontainer from './taskcontainer';
 
-const socket = io('http://localhost:5000');
+const socket = io('https://real-time-todo-using-websocket-server.onrender.com');
 
 const Task = () => {
 
